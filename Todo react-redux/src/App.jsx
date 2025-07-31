@@ -7,8 +7,12 @@ import { Route, Routes } from "react-router";
 import CounterComponent from "./component/Counter";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
+import Hero from "./component/Hero";
+import UrlForm from "./component/UrlForm";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
+
   // const [count, setCount] = useState(0);
 
   // const handleclick = useCallback(() => {
@@ -17,14 +21,23 @@ function App() {
   // function handleclick() {
   //   setCount(count + 1);
   // }
+  
   return (
     <>
-      <Routes>
-        <Route path="/" element={<AddTodo></AddTodo>}></Route>
-      </Routes>
       <Provider store={store}>
-        <CounterComponent></CounterComponent>
+        <Routes>
+          <Route path="/url" element={<UrlForm></UrlForm>}></Route>
+          <Route path="/addtodo" element={<AddTodo></AddTodo>}></Route>
+          {/* <Route path="/" element={<Hero></Hero>}></Route> */}
+          <Route path="/" element={<LandingPage></LandingPage>}></Route>
+          <Route
+            path="/cou"
+            element={<CounterComponent></CounterComponent>}
+          ></Route>
+          {/* <CounterComponent></CounterComponent> */}
+        </Routes>
       </Provider>
+
       {/* <div className="card">
         <button className="text-2xl bg-red-700 border" onClick={handleclick}>
           count is {count}
