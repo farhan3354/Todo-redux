@@ -7,12 +7,10 @@ import { Route, Routes } from "react-router";
 import CounterComponent from "./component/Counter";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
-import Hero from "./component/Hero";
 import UrlForm from "./component/UrlForm";
 import LandingPage from "./pages/LandingPage";
 
 function App() {
-
   // const [count, setCount] = useState(0);
 
   // const handleclick = useCallback(() => {
@@ -21,7 +19,7 @@ function App() {
   // function handleclick() {
   //   setCount(count + 1);
   // }
-  
+
   return (
     <>
       <Provider store={store}>
