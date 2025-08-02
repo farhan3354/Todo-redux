@@ -6,6 +6,7 @@ import UrlForm from "./component/UrlForm";
 import AddTodo from "./component/Addtodo";
 import CounterComponent from "./component/Counter";
 import LandingPage from "./pages/LandingPage";
+import PageNot from "./pages/NotFound";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/url" element={<UrlForm />} />
         <Route path="/addtodo" element={<AddTodo />} />
         <Route path="/cou" element={<CounterComponent />} />
+        <Route path="*" element={<PageNot />} />
       </Routes>
     </Provider>
   );
