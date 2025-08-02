@@ -1,6 +1,5 @@
 import { portfolioItems } from "./data";
 import { Code, Database, Cpu, Smartphone } from "lucide-react";
-
 export default function Service() {
   const services = [
     {
@@ -23,14 +22,13 @@ export default function Service() {
     },
     {
       icon: <Smartphone className="w-8 h-8" />,
-      title: "Mobile Development",
+      title: "Wordpress Development",
       description:
-        "Building cross-platform mobile applications with React Native and Expo.",
+        "Building wordpress website like services website as well as the ecommerce websites.",
     },
   ];
   return (
     <>
-      {/* Services Section - Updated with your actual services */}
       <section id="services" className="py-20 bg-gray-50">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
@@ -52,9 +50,7 @@ export default function Service() {
         </div>
       </section>
 
-      {/* Portfolio Section - Enhanced with tech tags */}
       <section id="portfolio" className="py-20">
-        {/* ... existing section structure ... */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {portfolioItems.map((item, index) => (
             <div key={index} className="group cursor-pointer">

@@ -45,10 +45,10 @@ export const portfolioItems = [
     tech: ["Socket.io", "React", "MongoDB"],
   },
   {
-    title: "Mobile Fitness App",
-    category: "Mobile",
+    title: "React Weather Api",
+    category: "Web developer",
     image: "bg-gradient-to-br from-pink-500 to-rose-500",
-    tech: ["React Native", "Expo", "Firebase"],
+    tech: ["React", "Weather Api", "CSS"],
   },
 ];
 

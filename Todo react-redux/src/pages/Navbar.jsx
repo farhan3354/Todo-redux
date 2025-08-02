@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { navItems } from "./data";
 import { Menu, X } from "lucide-react";
-
+import { Link } from "react-router";
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
@@ -50,14 +50,14 @@ export default function Navbar() {
           {isMenuOpen && (
             <div className="md:hidden bg-white border-t">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item}
                   href={`#${item.toLowerCase()}`}
                   className="block px-4 py-3 text-gray-700 hover:bg-gray-50"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item}
-                </a>
+                </Link>
               ))}
             </div>
           )}
