@@ -1,9 +1,6 @@
-const Listing = require("../models/Listing");
+import Listing from "../models/Listing.js";
 
-// @desc    Get all listings
-// @route   GET /api/listings
-// @access  Public
-exports.getListings = async (req, res) => {
+export const getListings = async (req, res) => {
   try {
     const { category, search } = req.query;
     let query = {};
@@ -17,45 +14,52 @@ exports.getListings = async (req, res) => {
     }
 
     const listings = await Listing.find(query);
-    res.json(listings);
+    return res.json(listings);
   } catch (error) {
-    res.status(500).json({ message: "Server Error" });
+    return res.status(500).json({ message: "Server Error" });
   }
 };
 
-// @desc    Get single listing
-// @route   GET /api/listings/:id
-// @access  Public
-exports.getListingById = async (req, res) => {
+export const getListingById = async (req, res) => {
   try {
-    const listing = await Listing.findById(req.params.id).populate(
+    const { id } = req.params;
+    const listing = await Listing.findById(id).populate(
       "hostId",
-      "name email profilePic"
+      "name email profilePic",
     );
 
     if (listing) {
-      res.json(listing);
+      return res.json(listing);
     } else {
-      res.status(404).json({ message: "Listing not found" });
+      return res.status(404).json({ message: "Listing not found" });
     }
   } catch (error) {
-    res.status(500).json({ message: "Server Error" });
+    return res.status(500).json({ message: "Server Error" });
   }
 };
 
-// @desc    Create a listing
-// @route   POST /api/listings
-// @access  Private
-exports.createListing = async (req, res) => {
+export const createListing = async (req, res) => {
   try {
-    const listing = new Listing({
-      hostId: req.user._id,
-      ...req.body,
+    const { title, description, type, location, price, maxGuests } = req.body;
+    if (!title || !description || !location || !price || !maxGuests) {
+      return res.status(404).json({ message: "All the feilds are requireds" });
+    }
+    const userId = req.params.id;
+    const rating = 0;
+    const listing = Listing.create({
+      userId,
+      title,
+      description,
+      type,
+      location,
+      price,
+      maxGuests,
+      rating,
     });
 
     const createdListing = await listing.save();
-    res.status(201).json(createdListing);
+    return res.status(201).json(createdListing);
   } catch (error) {
-    res.status(500).json({ message: "Server Error" });
+    return res.status(500).json({ message: "Server Error" });
   }
 };

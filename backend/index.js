@@ -1,7 +1,10 @@
-const express = require("express");
-const dotenv = require("dotenv");
-const cors = require("cors");
-const connectDB = require("./config/db");
+import express from "express";
+import dotenv from "dotenv";
+import connectDB from "./config/db.js";
+import cors from "cors";
+import authRoutes from "./routes/authRoutes.js";
+import listingRoutes from "./routes/listingRoutes.js";
+import adminRoutes from "./routes/adminRoutes.js"
 
 dotenv.config();
 
@@ -16,11 +19,9 @@ app.use(express.json());
 connectDB();
 
 // Routes
-app.use("/api/auth", require("./routes/authRoutes"));
-app.use("/api/listings", require("./routes/listingRoutes"));
-app.use("/api/admin", require("./routes/adminRoutes"));
-
-
+app.use("/api/auth",authRoutes);
+app.use("/api/listings",listingRoutes);
+app.use("/api/admin",adminRoutes);
 
 // Basic Route
 app.get("/", (req, res) => {

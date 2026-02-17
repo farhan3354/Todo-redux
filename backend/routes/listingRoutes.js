@@ -1,14 +1,14 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const {
+import {
   getListings,
   getListingById,
   createListing,
-} = require("../controllers/listingController");
-const { protect } = require("../middlewares/authMiddleware");
+} from "../controllers/listingController.js";
+import { protect } from "../middlewares/authMiddleware.js";
 
 router.get("/", getListings);
 router.get("/:id", getListingById);
 router.post("/", protect, createListing);
 
-module.exports = router;
+export default router;

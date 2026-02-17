@@ -1,11 +1,11 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const {
+import {
   getAllUsers,
   getAllListings,
   getAllBookings,
-} = require("../controllers/adminController");
-const { protect } = require("../middlewares/authMiddleware");
+} from "../controllers/adminController.js";
+import { protect } from "../middlewares/authMiddleware.js";
 
 // Middleware to check if user is admin
 const admin = (req, res, next) => {
@@ -17,7 +17,8 @@ const admin = (req, res, next) => {
 };
 
 router.get("/users", protect, admin, getAllUsers);
+router.get("/us", getAllUsers);
 router.get("/listings", protect, admin, getAllListings);
 router.get("/bookings", protect, admin, getAllBookings);
 
-module.exports = router;
+export default router;
